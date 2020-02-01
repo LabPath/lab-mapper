@@ -3,7 +3,7 @@
 # --- Variables --- #
 # Modify if needed...
 DEVICEWIDTH=1080
-SCREENSHOTLOCATION="/data/scripts/screen.dump" # You have to run the script as root for this
+SCREENSHOTLOCATION="/storage/emulated/0/scripts/afk-arena/screen.dump" # You have to run the script as root for this
 
 # Do not modify
 RGB=00000000

@@ -1,10 +1,15 @@
 #!/system/bin/sh
 
+# Variables
+LOCATION="storage/emulated/0"
+
 # TODO: Check if a device is connected with adb devices
-# TODO: Check if folders exist
+
+# Create directories if they don't already exist
+adb shell mkdir -p $LOCATION/scripts/afk-arena
 
 # Push the script to phone
-adb push afk-lab-mapper.sh storage/emulated/0/scripts/afk-arena
+adb push afk-lab-mapper.sh $LOCATION/scripts/afk-arena
 
 # Run script. Comment line if you don't want to run the script after pushing
-adb shell "su -c 'sh storage/emulated/0/scripts/afk-arena/afk-lab-mapper.sh'"
+adb shell sh $LOCATION/scripts/afk-arena/afk-lab-mapper.sh
