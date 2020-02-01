@@ -3,10 +3,12 @@
 # --- Variables --- #
 # Modify if needed...
 DEVICEWIDTH=1080
-SCREENSHOTLOCATION="/storage/emulated/0/scripts/afk-arena/screen.dump" # You have to run the script as root for this
+SCREENSHOTLOCATION="/storage/emulated/0/scripts/afk-arena/screen.dump"
 
 # Do not modify
 RGB=00000000
+
+# TODO: change the orientation of the phone if needed
 
 # --- Functions --- #
 # Test function: change apps, take screenshot, get rgb, change apps, exit. Params: X, Y
@@ -129,72 +131,72 @@ function checkRow() {
         checkTile $1 Right
         ;;
     3)
-        tap
+        tap 400 1040
         wait
         checkTile $1 Left
-        tap
+        tap 685 1040
         wait
         checkTile $1 Right
         ;;
     4)
-        tap
+        tap 240 840
         wait
         checkTile $1 Left
-        tap
+        tap 535 840
         wait
         checkTile $1 Middle
-        tap
+        tap 830 840
         wait
         checkTile $1 Right
         ;;
     5)
-        tap
+        tap 400 650
         wait
         checkTile $1 Left
-        tap
+        tap 685 650
         wait
         checkTile $1 Right
         ;;
     6)
-        tap
+        tap 240 460
         wait
         checkTile $1 Left
-        tap
+        tap 535 460
         wait
         checkTile $1 Middle
-        tap
+        tap 830 460
         wait
         checkTile $1 Right
         ;;
     7)
-        tap
+        tap 400 250
         wait
         checkTile $1 Left
-        tap
+        tap 685 250
         wait
         checkTile $1 Right
         ;;
     8)
-        tap
+        tap 240 1270
         wait
         checkTile $1 Left
-        tap
+        tap 535 1270
         wait
         checkTile $1 Middle
-        tap
+        tap 830 1270
         wait
         checkTile $1 Right
         ;;
     9)
-        tap
+        tap 400 1070
         wait
         checkTile $1 Left
-        tap
+        tap 685 1070
         wait
         checkTile $1 Right
         ;;
     *)
-        echo "Wtf do you mean you cant write a correct row number. Srlsy? Yu stoopid."
+        echo "Wtf do you mean you can't write a correct row number. Srlsy? Yu stoopid."
         ;;
     esac
 }
@@ -233,7 +235,7 @@ function checkTile() {
                     if [ $RGB == 78a4a7 ]; then
                         echo "$1|$2: Roamer"
                     else
-                        echo "I don't know wtf that tile is."
+                        echo "$1|$2: Unknown Tile"
                     fi
                 fi
             fi
@@ -243,9 +245,8 @@ function checkTile() {
 }
 
 # --- Script Start --- #
-# TODO: change the orientation of the phone if needed
 closeApp
-sleep 0.5
+wait
 startApp
 sleep 10
 echo "Starting script..."
@@ -265,8 +266,23 @@ sleep 1
 tap 350 1050
 sleep 1
 
+# Check each row
 checkRow 1
 checkRow 2
+checkRow 3
+checkRow 4
+checkRow 5
+checkRow 6
+checkRow 7
+
+# Swipe to end of lab floor
+input swipe 550 300 550 1600 200
+sleep 0.1
+input swipe 550 300 550 1600 200
+
+# Check last rows
+checkRow 8
+checkRow 9
 
 switchApp
 echo
