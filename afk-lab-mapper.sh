@@ -8,8 +8,6 @@ SCREENSHOTLOCATION="/storage/emulated/0/scripts/afk-arena/screen.dump"
 # Do not modify
 RGB=00000000
 
-# TODO: change the orientation of the phone if needed
-
 # --- Functions --- #
 # Test function: change apps, take screenshot, get rgb, change apps, exit. Params: X, Y
 function test() {
@@ -41,6 +39,11 @@ function closeApp() {
 function switchApp() {
     input keyevent KEYCODE_APP_SWITCH
     input keyevent KEYCODE_APP_SWITCH
+}
+
+# Disables automatic orientation
+function disableOrientation() {
+    content insert --uri content://settings/system --bind name:s:accelerometer_rotation --bind value:i:0
 }
 
 # Takes a screenshot and saves it
@@ -251,6 +254,9 @@ startApp
 sleep 10
 echo "Starting script..."
 echo
+
+# Disables Orientation
+disableOrientation
 
 # Loops until the game has launched
 while [ "$RGB" != "cc9261" ]; do
