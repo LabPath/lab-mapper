@@ -66,11 +66,6 @@ function getColor() {
     readRGB $1 $2
 }
 
-# Taps on the screen. Params: X, Y
-function tap() {
-    input tap $1 $2
-}
-
 # Verifies if X and Y have specific RGB. Params: X, Y, RGB, MessageSuccess, MessageFailure
 function verifyRGB() {
     getColor $1 $2
@@ -89,17 +84,17 @@ function verifyRGB() {
 function switchTab() {
     case "$1" in
     "Campaign")
-        tap 550 1850
+        input tap 550 1850
         wait
         verifyRGB 450 1775 cc9261 "Successfully switched to the Campaign Tab."
         ;;
     "Dark Forest")
-        tap 300 1850
+        input tap 300 1850
         wait
         verifyRGB 240 1775 d49a61 "Successfully switched to the Dark Forest Tab."
         ;;
     "Ranhorn")
-        tap 110 1850
+        input tap 110 1850
         wait
         verifyRGB 20 1775 d49a61 "Successfully switched to the Rahorn Tab."
         ;;
@@ -115,86 +110,86 @@ function switchTab() {
 function checkRow() {
     case $1 in
     1)
-        tap 400 1410
+        input tap 400 1410
         wait
         checkTile $1 Left
-        tap 685 1410
+        input tap 685 1410
         wait
         checkTile $1 Right
         ;;
     2)
-        tap 240 1200
+        input tap 240 1200
         wait
         checkTile $1 Left
-        tap 535 1200
+        input tap 535 1200
         wait
         checkTile $1 Middle
-        tap 830 1200
+        input tap 830 1200
         wait
         checkTile $1 Right
         ;;
     3)
-        tap 400 1040
+        input tap 400 1040
         wait
         checkTile $1 Left
-        tap 685 1040
+        input tap 685 1040
         wait
         checkTile $1 Right
         ;;
     4)
-        tap 240 840
+        input tap 240 840
         wait
         checkTile $1 Left
-        tap 535 840
+        input tap 535 840
         wait
         checkTile $1 Middle
-        tap 830 840
+        input tap 830 840
         wait
         checkTile $1 Right
         ;;
     5)
-        tap 400 650
+        input tap 400 650
         wait
         checkTile $1 Left
-        tap 685 650
+        input tap 685 650
         wait
         checkTile $1 Right
         ;;
     6)
-        tap 240 460
+        input tap 240 460
         wait
         checkTile $1 Left
-        tap 535 460
+        input tap 535 460
         wait
         checkTile $1 Middle
-        tap 830 460
+        input tap 830 460
         wait
         checkTile $1 Right
         ;;
     7)
-        tap 400 250
+        input tap 400 250
         wait
         checkTile $1 Left
-        tap 685 250
+        input tap 685 250
         wait
         checkTile $1 Right
         ;;
     8)
-        tap 240 1270
+        input tap 240 1270
         wait
         checkTile $1 Left
-        tap 535 1270
+        input tap 535 1270
         wait
         checkTile $1 Middle
-        tap 830 1270
+        input tap 830 1270
         wait
         checkTile $1 Right
         ;;
     9)
-        tap 400 1070
+        input tap 400 1070
         wait
         checkTile $1 Left
-        tap 685 1070
+        input tap 685 1070
         wait
         checkTile $1 Right
         ;;
@@ -244,7 +239,7 @@ function checkTile() {
             fi
         fi
     fi
-    tap 270 1800
+    input tap 270 1800
 }
 
 # --- Script Start --- #
@@ -269,7 +264,7 @@ switchTab "Campaign"
 sleep 1
 switchTab "Dark Forest"
 sleep 1
-tap 350 1050
+input tap 350 1050
 sleep 1
 
 # Check each row
